@@ -1,0 +1,42 @@
+{
+  "name": "nexscope-amazon-intelligence",
+  "version": "1.1.0",
+  "description": "Amazon product, keyword, market, competitor, review, sales, policy, and advertising workflows powered by NexScope.",
+  "author": {
+    "name": "ECOCREATE TECHNOLOGY PTE. LTD.",
+    "email": "service@nexscope.ai",
+    "url": "https://www.nexscope.ai/"
+  },
+  "homepage": "https://www.nexscope.ai/",
+  "keywords": [
+    "amazon",
+    "ecommerce",
+    "market-research",
+    "product-research",
+    "keyword-research"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "NexScope Amazon Intelligence",
+    "shortDescription": "Research Amazon products, markets, keywords, competitors, reviews, sales, and ads.",
+    "longDescription": "Use NexScope workflows to research Amazon demand, products, niches, keywords, competitors, reviews, sales estimates, policy updates, and advertising operations across supported marketplaces.",
+    "developerName": "ECOCREATE TECHNOLOGY PTE. LTD.",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://www.nexscope.ai/",
+    "privacyPolicyURL": "https://www.nexscope.ai/privacy",
+    "termsOfServiceURL": "https://www.nexscope.ai/terms",
+    "defaultPrompt": [
+      "Find promising Amazon US niches with strong demand and moderate competition.",
+      "Analyze the keywords and traffic sources for this Amazon ASIN.",
+      "Compare customer complaints across reviews for these Amazon products."
+    ],
+    "brandColor": "#635BFF",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "logoDark": "./assets/logo-dark.png"
+  }
+}
