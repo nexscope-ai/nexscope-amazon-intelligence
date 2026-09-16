@@ -15,7 +15,7 @@ The skills are synchronized from [`nexscope-ai/nexscope-ecommerce-skills`](https
 
 ## Authentication
 
-Commercial installations use the browser device flow and keep both credentials in macOS Keychain or Windows Credential Manager:
+Paid NexScope subscribers automatically receive plugin access. The browser device flow verifies the subscription, binds the installation to the subscriber's existing API key, and stores only a revocable installation token in macOS Keychain or Windows Credential Manager:
 
 ```sh
 python3 runtime/installer.py connect
@@ -31,6 +31,8 @@ export NEXSCOPE_API_KEY="<your_api_key>"
 ```
 
 Never commit API keys or include them in prompts, logs, fixtures, or bug reports. There is no plaintext fallback when the system credential store is unavailable.
+
+If the account has no active subscription, the authorization page does not activate the device and directs the user to subscribe. The plugin does not create or display a separate API key.
 
 Other local commands are `status`, `doctor`, `disconnect`, and `uninstall`. Use `disconnect --local-only` only when the service is unreachable; the remote device seat then remains occupied until it is removed on the account page.
 

@@ -15,7 +15,7 @@
 
 ## 身份验证
 
-商业安装通过浏览器设备授权连接账号，并把设备 API Key 与安装令牌保存到 macOS 钥匙串或 Windows 凭据管理器：
+NexScope 付费订阅用户自动获得插件权益。浏览器设备授权会校验订阅状态，将当前设备绑定到账号已有的 API Key，并且只把可撤销的安装令牌保存到 macOS 钥匙串或 Windows 凭据管理器：
 
 ```sh
 python3 runtime/installer.py connect
@@ -31,6 +31,8 @@ export NEXSCOPE_API_KEY="<your_api_key>"
 ```
 
 不要将 API 密钥提交到仓库，也不要把密钥写入提示词、日志、测试数据或问题报告。系统凭据库不可用时不会降级为明文保存。
+
+账号没有有效订阅时，授权页不会激活设备，并会引导用户完成订阅。插件不会另行生成或展示 API Key。
 
 其他本机命令为 `status`、`doctor`、`disconnect` 和 `uninstall`。仅在服务不可达时使用 `disconnect --local-only`；此时远端席位仍会占用，需在账号设备页解绑。
 
