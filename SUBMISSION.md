@@ -5,7 +5,7 @@ This file contains the information that is not embedded in `.codex-plugin/plugin
 ## Listing
 
 - **Name:** NexScope Amazon Intelligence
-- **Developer:** ECOCREATE TECHNOLOGY PTE. LTD.
+- **Developer:** NexScope
 - **Category:** Productivity
 - **Short description:** Research Amazon products, markets, keywords, competitors, reviews, sales, and ads.
 - **Website:** https://www.nexscope.ai/

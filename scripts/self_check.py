@@ -243,6 +243,7 @@ def main() -> None:
 
         config["apiBase"] = "https://api.nexscope.ai/api/"
         credentials.write_json_atomic(credentials.data_dir() / "config.json", config)
+        assert credentials.validate_api_base(config["apiBase"]) == "https://api.nexscope.ai/"
         requested = []
         class Response:
             def __enter__(self): return self

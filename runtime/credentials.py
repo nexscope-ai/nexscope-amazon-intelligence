@@ -90,7 +90,10 @@ def validate_api_base(value: str) -> str:
         raise CredentialError("Configured API base is not an allowed NexScope HTTPS endpoint")
     if parsed.query or parsed.fragment:
         raise CredentialError("Configured API base must not contain a query or fragment")
-    return value.strip().rstrip("/") + "/"
+    path = parsed.path.rstrip("/")
+    if path == "/api":
+        path = ""
+    return parsed._replace(path=path + "/", params="", query="", fragment="").geturl()
 
 
 def ensure_config(api_base: str = DEFAULT_API_BASE) -> dict:

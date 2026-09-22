@@ -87,6 +87,6 @@ For troubleshooting, run `.runtime-venv/bin/python runtime/installer.py doctor` 
 
 ## Publisher
 
-ECOCREATE TECHNOLOGY PTE. LTD.  
+NexScope
 Support: [service@nexscope.ai](mailto:service@nexscope.ai)  
 [Website](https://www.nexscope.ai/) · [Privacy](https://www.nexscope.ai/privacy) · [Terms](https://www.nexscope.ai/terms)

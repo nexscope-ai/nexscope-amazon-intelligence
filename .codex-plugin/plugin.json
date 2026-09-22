@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "description": "Amazon product, keyword, market, competitor, review, sales, policy, and advertising workflows powered by NexScope.",
   "author": {
-    "name": "ECOCREATE TECHNOLOGY PTE. LTD.",
+    "name": "NexScope",
     "email": "service@nexscope.ai",
     "url": "https://www.nexscope.ai/"
   },
@@ -20,7 +20,7 @@
     "displayName": "NexScope Amazon Intelligence",
     "shortDescription": "Research Amazon products, markets, keywords, competitors, reviews, sales, and ads.",
     "longDescription": "Use NexScope workflows to research Amazon demand, products, niches, keywords, competitors, reviews, sales estimates, policy updates, and advertising operations across supported marketplaces.",
-    "developerName": "ECOCREATE TECHNOLOGY PTE. LTD.",
+    "developerName": "NexScope",
     "category": "Productivity",
     "capabilities": [
       "Interactive",
@@ -36,7 +36,7 @@
     ],
     "brandColor": "#635BFF",
     "composerIcon": "./assets/icon.png",
-    "logo": "./assets/logo.png",
-    "logoDark": "./assets/logo-dark.png"
+    "logo": "./assets/icon.png",
+    "logoDark": "./assets/icon.png"
   }
 }
