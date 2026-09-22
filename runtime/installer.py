@@ -27,7 +27,7 @@ from runtime import credentials, release
 
 INSTALLER_VERSION = "1.0.0"
 VERIFICATION_HOSTS = {"nexscope.ai", "www.nexscope.ai"}
-RELEASE_REPOSITORY = "/lambbell/nexscope-amazon-intelligence/releases/download/"
+RELEASE_REPOSITORY = "/nexscope-ai/nexscope-amazon-intelligence/releases/download/"
 DOWNLOAD_HOSTS = {"github.com", "objects.githubusercontent.com", "release-assets.githubusercontent.com"}
 MARKETPLACE_NAME = "nexscope-managed"
 

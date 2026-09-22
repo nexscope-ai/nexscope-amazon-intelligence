@@ -109,7 +109,7 @@ def main() -> None:
     trusted_keys_bytes = (json.dumps(trusted_keys, indent=2, sort_keys=True) + "\n").encode()
     base_url = args.artifact_base_url.rstrip("/")
     parsed_url = urlparse(base_url)
-    if parsed_url.scheme != "https" or parsed_url.hostname != "github.com" or not parsed_url.path.startswith("/lambbell/nexscope-amazon-intelligence/releases/download/") or parsed_url.query or parsed_url.fragment:
+    if parsed_url.scheme != "https" or parsed_url.hostname != "github.com" or not parsed_url.path.startswith("/nexscope-ai/nexscope-amazon-intelligence/releases/download/") or parsed_url.query or parsed_url.fragment:
         raise SystemExit("--artifact-base-url must be an official GitHub release asset directory")
     output = args.output.resolve() if args.output else ROOT / "dist" / args.version
     output.mkdir(parents=True, exist_ok=True)

@@ -70,10 +70,10 @@ Run `python3 scripts/self_check.py` before committing or building a release. Kee
 Prepare reviewed offline wheels for both supported platforms, then run:
 
 ```sh
-python3 scripts/build_release.py 1.1.0 \
+python3 scripts/build_release.py 1.1.1 \
   --wheel-dir /path/to/reviewed-wheels \
   --trusted-keys /path/to/reviewed-trusted-keys.json \
-  --artifact-base-url https://github.com/lambbell/nexscope-amazon-intelligence/releases/download/v1.1.0
+  --artifact-base-url https://github.com/nexscope-ai/nexscope-amazon-intelligence/releases/download/v1.1.1
 python3 scripts/self_check.py
 ```
 

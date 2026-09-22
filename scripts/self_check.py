@@ -186,7 +186,7 @@ def main() -> None:
         artifact = {
             "platform": "macos",
             "arch": "arm64",
-            "artifactUrl": "https://github.com/lambbell/nexscope-amazon-intelligence/releases/download/v1.1.0/test.zip",
+            "artifactUrl": "https://github.com/nexscope-ai/nexscope-amazon-intelligence/releases/download/v1.1.0/test.zip",
             "artifactSha256": "0" * 64,
             "artifactBytes": 1,
             "encryptedPayloadSha256": release.sha256_file(encrypted),
@@ -391,7 +391,7 @@ def main() -> None:
         result = subprocess.run([
             sys.executable, str(ROOT / "scripts/build_release.py"), "1.1.0",
             "--wheel-dir", str(wheels), "--trusted-keys", str(trusted),
-            "--artifact-base-url", "https://github.com/lambbell/nexscope-amazon-intelligence/releases/download/v1.1.0",
+            "--artifact-base-url", "https://github.com/nexscope-ai/nexscope-amazon-intelligence/releases/download/v1.1.0",
             "--output", str(build_output),
         ], capture_output=True, text=True)
         assert result.returncode == 0, result.stderr
