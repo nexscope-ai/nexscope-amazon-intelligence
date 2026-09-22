@@ -171,11 +171,11 @@ def connect() -> None:
     device_code = str(authorization.get("deviceCode", ""))
     interval = max(5, int(authorization.get("interval", 5)))
     deadline = time.monotonic() + min(600, int(authorization.get("expiresIn", 600)))
-    print("正在打开 NexScope 授权页……")
-    print(f"请核对验证码：{user_code}")
+    print("Opening the NexScope authorization page...")
+    print(f"Confirm this code: {user_code}")
     if not webbrowser.open(verification_complete):
-        print(f"请手动打开：{verification_uri}")
-    print("等待浏览器确认（10 分钟内有效）。按 Ctrl+C 取消。")
+        print(f"Open this URL manually: {verification_uri}")
+    print("Waiting for browser confirmation (valid for up to 10 minutes). Press Ctrl+C to cancel.")
     backoff = interval
     while time.monotonic() < deadline:
         try:
@@ -193,7 +193,7 @@ def connect() -> None:
         if status != "ACTIVATED":
             raise InstallerError(f"Authorization ended with status {status or 'unknown'}")
         _save_connection(config, result)
-        print("账号已连接，凭据已安全保存。")
+        print("Account connected and credentials stored securely.")
         return
     raise InstallerError("Authorization expired; start again")
 
@@ -215,7 +215,7 @@ def disconnect(local_only: bool = False) -> None:
     if not local_only:
         _request("/api/plugins/installations/current/revoke", body={}, token=credentials.installation_token())
     credentials.delete()
-    print("本机凭据已移除。" + ("远端席位仍占用，请在网页设备页解绑。" if local_only else "远端设备已解绑。"))
+    print("Local credentials removed. " + ("The remote device seat remains active; remove it on the account page." if local_only else "The remote device was disconnected."))
 
 
 class _InstallLock:
@@ -362,7 +362,7 @@ def update(channel: str = "stable") -> None:
         _request("/api/plugins/installations/current/report", body={
             "installedVersion": version, "installerVersion": INSTALLER_VERSION,
         }, token=token)
-        print("已恢复上次中断的安装。请重启 Codex，并在新任务中确认插件版本。")
+        print("Recovered the interrupted installation. Restart Codex and confirm the plugin version in a new task.")
         return
     config = credentials.read_config()
     latest_query = {
@@ -374,7 +374,7 @@ def update(channel: str = "stable") -> None:
         latest_query["currentVersion"] = config["currentVersion"]
     latest = _request("/api/plugins/releases/latest", token=token, query=latest_query)
     if not latest.get("updateAvailable"):
-        print("当前已是最新可用版本。")
+        print("The latest available version is already installed.")
         return
     release_id = str((latest.get("release") or {}).get("id", ""))
     if not release_id:
@@ -409,7 +409,7 @@ def update(channel: str = "stable") -> None:
         "installedVersion": credentials.read_config()["currentVersion"],
         "installerVersion": INSTALLER_VERSION,
     }, token=token)
-    print("安装完成。请重启 Codex，并在新任务中确认插件版本。")
+    print("Installation complete. Restart Codex and confirm the plugin version in a new task.")
 
 
 def doctor() -> None:
@@ -446,7 +446,7 @@ def rollback(version: str) -> None:
     _request("/api/plugins/installations/current/report", body={
         "installedVersion": version, "installerVersion": INSTALLER_VERSION,
     }, token=token)
-    print("已回退到本地保留版本。请重启 Codex，并在新任务中确认插件版本。")
+    print("Rolled back to the retained local version. Restart Codex and confirm the plugin version in a new task.")
 
 
 def uninstall(revoke: bool = False) -> None:
@@ -468,27 +468,27 @@ def uninstall(revoke: bool = False) -> None:
         shutil.rmtree(root / name, ignore_errors=True)
     for name in ("config.json", "state.json", ".install.lock"):
         (root / name).unlink(missing_ok=True)
-    print("受管插件运行文件已移除；用户报告和其他插件未更改。")
+    print("Managed plugin files removed; user reports and other plugins were not changed.")
     if not revoke:
-        print("远端设备席位仍占用，请在 NexScope 账号设备页解绑。")
+        print("The remote device seat remains active; remove it on the NexScope account page.")
 
 
 def menu() -> None:
     print("NexScope Amazon Intelligence")
-    print("1. 安装或连接账号")
-    print("2. 检查更新")
-    print("3. 检查安装状态")
-    print("4. 断开账号")
-    print("5. 卸载插件")
-    choice = input("请选择 [1-5]：").strip()
+    print("1. Install or connect account")
+    print("2. Check for updates")
+    print("3. Check installation status")
+    print("4. Disconnect account")
+    print("5. Uninstall plugin")
+    choice = input("Choose [1-5]: ").strip()
     if choice == "1":
         connect()
         update()
     elif choice == "2": update()
     elif choice == "3": status()
     elif choice == "4": disconnect()
-    elif choice == "5": uninstall(input("是否同时解绑远端设备？[y/N]：").strip().lower() == "y")
-    else: raise InstallerError("无效选择")
+    elif choice == "5": uninstall(input("Also disconnect the remote device? [y/N]: ").strip().lower() == "y")
+    else: raise InstallerError("Invalid choice")
 
 
 def main() -> None:
@@ -520,8 +520,8 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print("\n已取消。")
+        print("\nCancelled.")
         raise SystemExit(130)
     except (credentials.CredentialError, release.ReleaseError, InstallerError, KeyError, ValueError) as error:
-        print(f"错误：{error}")
+        print(f"Error: {error}")
         raise SystemExit(1)

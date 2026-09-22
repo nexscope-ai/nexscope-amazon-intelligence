@@ -1,8 +1,28 @@
 # NexScope Amazon Intelligence
 
-[简体中文](README.zh-CN.md)
+An OpenAI Codex plugin containing 40 Amazon ecommerce skills for product, market, keyword, competitor, review, sales, policy, category, and advertising workflows across supported Amazon marketplaces.
 
-An OpenAI Codex plugin containing 40 Amazon ecommerce skills for product, market, keyword, competitor, review, sales, policy, category, and advertising workflows.
+## Requirements
+
+- A paid NexScope subscription
+- OpenAI Codex CLI
+- Windows x64, macOS x64, or macOS arm64
+- Python 3.11 or later for the commercial installer
+
+## Install
+
+Use the commercial release archive for your platform. It contains the installer, encrypted plugin payload, reviewed offline dependencies, and [installation instructions](OFFLINE_INSTALL.md).
+
+- macOS: open `install.command` or run `./install.command`.
+- Windows: open `install.bat`.
+
+Choose **Install or connect account**. The installer opens the NexScope authorization page, verifies the subscription, installs the licensed payload, and registers the plugin with Codex. Restart Codex after installation.
+
+Example prompts:
+
+- `Find promising Amazon US niches with strong demand and moderate competition.`
+- `Analyze the keywords and traffic sources for this Amazon ASIN.`
+- `Compare recurring customer complaints for these Amazon products.`
 
 ## Contents
 
@@ -36,6 +56,15 @@ If the account has no active subscription, the authorization page does not activ
 
 Other local commands are `status`, `doctor`, `disconnect`, and `uninstall`. Use `disconnect --local-only` only when the service is unreachable; the remote device seat then remains occupied until it is removed on the account page.
 
+## Security
+
+- Installation credentials are stored in macOS Keychain or Windows Credential Manager; plaintext credential stores are rejected.
+- Authenticated redirects cannot leave the original API host.
+- Release archives and encrypted payloads are verified before installation.
+- Production signing keys and payload keys are not stored in this repository.
+
+Run `python3 scripts/self_check.py` before committing or building a release. Keep `.env` files, private keys, API keys, generated `payload-key.private.json` files, and release output out of Git.
+
 ## Commercial release build
 
 Prepare reviewed offline wheels for both supported platforms, then run:
@@ -53,6 +82,8 @@ The build emits the three frozen platform/architecture archives, an exact Manife
 ## Install locally
 
 The commercial archive contains a thin installer, encrypted payload, reviewed offline dependencies, and installation instructions. Plaintext skills are installed only after the service grants a licensed payload key.
+
+For troubleshooting, run `.runtime-venv/bin/python runtime/installer.py doctor` on macOS or `.runtime-venv\Scripts\python.exe runtime\installer.py doctor` on Windows. Diagnostic output does not include credentials.
 
 ## Publisher
 

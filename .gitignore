@@ -1,5 +1,10 @@
 .DS_Store
 __pycache__/
 *.pyc
+.env
+.env.*
+*.key
+*.pem
+payload-key.private.json
 nexscope/
 dist/
